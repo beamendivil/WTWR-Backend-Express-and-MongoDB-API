@@ -1,10 +1,17 @@
-import bcrypt from 'bcryptjs'; // For hashing passwords
-import jwt from 'jsonwebtoken'; // For creating tokens
-import User from '../models/user.js';
-import { JWT_SECRET } from '../utils/config.js';
+const bcrypt = require('bcryptjs'); // For hashing passwords
+const jwt = require('jsonwebtoken'); // For creating tokens
+const User = require('../models/user');
+const { JWT_SECRET } = require('../utils/config');
+const {
+  INVALID_DATA_ERROR,
+  UNAUTHORIZED_ERROR,
+  NOT_FOUND_ERROR,
+  CONFLICT_ERROR,
+  DEFAULT_ERROR,
+} = require('../utils/errors');
 
 // 1. Create User (Sign Up)
-export const createUser = (req, res) => {
+const createUser = (req, res) => {
   const { name, avatar, email, password } = req.body;
 
   // Hash the password before creating the user
@@ -23,18 +30,22 @@ export const createUser = (req, res) => {
     })
     .catch((err) => {
       if (err.code === 11000) {
-        res.status(409).send({ message: 'Email already exists' });
+        res.status(CONFLICT_ERROR).send({ message: 'Email already exists' });
       } else if (err.name === 'ValidationError') {
-        res.status(400).send({ message: 'Invalid data passed' });
+        res.status(INVALID_DATA_ERROR).send({ message: 'Invalid data passed' });
       } else {
-        res.status(500).send({ message: 'An error occurred' });
+        res.status(DEFAULT_ERROR).send({ message: 'An error occurred' });
       }
     });
 };
 
 // 2. Login (Sign In)
-export const login = (req, res) => {
+const login = (req, res) => {
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(INVALID_DATA_ERROR).send({ message: 'Email and password are required' });
+  }
 
   // Use the custom method from models/user.js
   return User.findUserByCredentials(email, password)
@@ -47,30 +58,30 @@ export const login = (req, res) => {
     })
     .catch((err) => {
       if (err.message === 'Incorrect email or password') {
-        res.status(401).send({ message: 'Incorrect email or password' });
+        res.status(UNAUTHORIZED_ERROR).send({ message: 'Incorrect email or password' });
       } else {
-        res.status(500).send({ message: 'An error occurred' });
+        res.status(DEFAULT_ERROR).send({ message: 'An error occurred' });
       }
     });
 };
 
 // 3. Get Current User (GET /users/me)
-export const getCurrentUser = (req, res) => {
+const getCurrentUser = (req, res) => {
   // req.user._id will come from the auth middleware we build next
   User.findById(req.user._id)
     .then((user) => {
       if (!user) {
-        return res.status(404).send({ message: 'User not found' });
+        return res.status(NOT_FOUND_ERROR).send({ message: 'User not found' });
       }
       res.send(user);
     })
     .catch((err) => {
-      res.status(500).send({ message: 'An error occurred' });
+      res.status(DEFAULT_ERROR).send({ message: 'An error occurred' });
     });
 };
 
 // 4. Update Profile (PATCH /users/me)
-export const updateProfile = (req, res) => {
+const updateProfile = (req, res) => {
   const { name, avatar } = req.body;
 
   // Use req.user._id to ensure they only edit their own profile
@@ -81,15 +92,22 @@ export const updateProfile = (req, res) => {
   )
     .then((user) => {
       if (!user) {
-        return res.status(404).send({ message: 'User not found' });
+        return res.status(NOT_FOUND_ERROR).send({ message: 'User not found' });
       }
       res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        res.status(400).send({ message: 'Invalid data passed' });
+        res.status(INVALID_DATA_ERROR).send({ message: 'Invalid data passed' });
       } else {
-        res.status(500).send({ message: 'An error occurred' });
+        res.status(DEFAULT_ERROR).send({ message: 'An error occurred' });
       }
     });
+};
+
+module.exports = {
+  createUser,
+  login,
+  getCurrentUser,
+  updateProfile,
 };

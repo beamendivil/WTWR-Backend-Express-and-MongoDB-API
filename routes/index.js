@@ -1,10 +1,10 @@
-import express from 'express';
-import clothingItemsRouter from './clothingItems.js';
-import usersRouter from './users.js';
+const express = require('express');
+const clothingItemsRouter = require('./clothingItems');
+const usersRouter = require('./users');
 
 const router = express.Router();
 
 router.use('/items', clothingItemsRouter);
 router.use('/users', usersRouter);
 
-export default router;
+module.exports = router;
