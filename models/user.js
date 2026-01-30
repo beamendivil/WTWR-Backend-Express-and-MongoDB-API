@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true, // This ensures emails are unique
+    unique: true, 
     validate: {
       validator(value) {
         return validator.isEmail(value);
@@ -35,20 +35,17 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    select: false, // This hides the password from the database response
+    select: false, 
   },
 });
 
-// Custom method to check email and password during login
 userSchema.statics.findUserByCredentials = function (email, password) {
-  // We explicitly ask for the password here because 'select: false' hides it by default
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
         return Promise.reject(new Error('Incorrect email or password'));
       }
 
-      // Compare the submitted password with the stored hash
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {

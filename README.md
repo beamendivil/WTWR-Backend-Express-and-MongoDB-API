@@ -128,8 +128,12 @@ npm run deploy
 ```
 
 ## Links
+ ## Project Pitch Video
+ 
+[Check out my video  Pitch here] (https://drive.google.com/file/d/1YO0qHTFBgcfvCzdzvFkXXmg_7fUn3d9p/view?usp=sharing),
+where I describe my 
+project and some challenges I faced while building it.
 
-- [Live Demo](https://youtu.be/_2kesm-Sifw?si=qFTBzOhWWJ_4JOXf)
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 
 ## Author
@@ -137,3 +141,5 @@ npm run deploy
 **Bea Mendivil**
 
 - GitHub: [@beamendivil](https://github.com/beamendivil)
+
+

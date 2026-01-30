@@ -1,6 +1,3 @@
-// routes/index.js
-// Main router that assembles feature routers.
-
 import express from 'express';
 import clothingItemsRouter from './clothingItems.js';
 import usersRouter from './users.js';
