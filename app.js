@@ -4,6 +4,7 @@ const cors = require('cors');
 const { login, createUser } = require('./controllers/users');
 const { getClothingItems } = require('./controllers/clothingItems');
 const auth = require('./middlewares/auth');
+const errorHandler = require('./middlewares/error-handler');
 const usersRouter = require('./routes/users');
 const clothingItemsRouter = require('./routes/clothingItems');
 
@@ -33,6 +34,8 @@ app.use(auth);
 // --- PROTECTED ROUTES ---
 app.use('/users', usersRouter);
 app.use('/items', clothingItemsRouter);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);
