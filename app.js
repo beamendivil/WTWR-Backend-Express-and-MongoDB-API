@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); 
-const { login, createUser } = require('./controllers/users');
-const { getClothingItems } = require('./controllers/clothingItems');
-const auth = require('./middlewares/auth');
-const errorHandler = require('./middlewares/error-handler');
-const usersRouter = require('./routes/users');
-const clothingItemsRouter = require('./routes/clothingItems');
+const { errors } = require('celebrate');
+const { login, createUser } = require('./controllers/users.js');
+const { getClothingItems } = require('./controllers/clothingItems.js');
+const auth = require('./middlewares/auth.js');
+const errorHandler = require('./middlewares/error-handler.js');
+const { requestLogger, errorLogger } = require('./middlewares/logger.js');
+const usersRouter = require('./routes/users.js');
+const clothingItemsRouter = require('./routes/clothingItems.js');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/wtwr_db')
@@ -22,6 +24,9 @@ const { PORT = 3001 } = process.env;
 app.use(cors());
 app.use(express.json());
 
+// request logger
+app.use(requestLogger);
+
 // --- PUBLIC ROUTES (Must be BEFORE auth) ---
 app.post('/signin', login);
 app.post('/signup', createUser);
@@ -35,6 +40,13 @@ app.use(auth);
 app.use('/users', usersRouter);
 app.use('/items', clothingItemsRouter);
 
+// error logger
+app.use(errorLogger);
+
+// celebrate error handler
+app.use(errors());
+
+// our centralized handler
 app.use(errorHandler);
 
 app.listen(PORT, () => {

@@ -26,7 +26,7 @@ module.exports = {
   rules: {
     // Mini-task solution: Allow the use of _id (underscore dangle)
     "no-underscore-dangle": ["error", { allow: ["_id"] }],
-    "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
     "no-console": "off",
     "no-new": "off",
     "import/no-extraneous-dependencies": [
