@@ -69,9 +69,22 @@ const validateId = celebrate({
   }),
 });
 
+const validateUpdateProfile = celebrate({
+  body: Joi.object().keys({
+    name: Joi.string().min(2).max(30).messages({
+      'string.min': 'The minimum length of the "name" field is 2',
+      'string.max': 'The maximum length of the "name" field is 30',
+    }),
+    avatar: Joi.string().custom(validateURL).messages({
+      'string.uri': 'the "avatar" field must be a valid url',
+    }),
+  }),
+});
+
 module.exports = {
   validateCreateItem,
   validateSignup,
   validateLogin,
   validateId,
+  validateUpdateProfile,
 };

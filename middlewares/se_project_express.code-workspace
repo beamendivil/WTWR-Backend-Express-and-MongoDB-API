@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "se_project_express",
+			"path": ".."
+		},
+		{
+			"name": "se_project_react",
+			"path": "../../se_project_react"
+		}
+	],
+	"settings": {}
+}

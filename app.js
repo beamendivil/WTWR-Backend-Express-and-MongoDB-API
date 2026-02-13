@@ -7,6 +7,7 @@ const { getClothingItems } = require('./controllers/clothingItems.js');
 const auth = require('./middlewares/auth.js');
 const errorHandler = require('./middlewares/error-handler.js');
 const { requestLogger, errorLogger } = require('./middlewares/logger.js');
+const { validateSignup, validateLogin } = require('./middlewares/validation.js');
 const usersRouter = require('./routes/users.js');
 const clothingItemsRouter = require('./routes/clothingItems.js');
 
@@ -28,8 +29,8 @@ app.use(express.json());
 app.use(requestLogger);
 
 // --- PUBLIC ROUTES (Must be BEFORE auth) ---
-app.post('/signin', login);
-app.post('/signup', createUser);
+app.post('/signin', validateLogin, login);
+app.post('/signup', validateSignup, createUser);
 app.get('/items', getClothingItems);
 
 // --- AUTHORIZATION MIDDLEWARE ---
