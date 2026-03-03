@@ -1,20 +1,18 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors'); 
-const { errors } = require('celebrate');
-const { login, createUser } = require('./controllers/users.js');
-const { getClothingItems } = require('./controllers/clothingItems.js');
-const auth = require('./middlewares/auth.js');
-const errorHandler = require('./middlewares/error-handler.js');
-const { requestLogger, errorLogger } = require('./middlewares/logger.js');
-const { validateSignup, validateLogin } = require('./middlewares/validation.js');
-const usersRouter = require('./routes/users.js');
-const clothingItemsRouter = require('./routes/clothingItems.js');
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const { errors } = require("celebrate");
+const mainRouter = require("./routes/index.js");
+const errorHandler = require("./middlewares/error-handler.js");
+const { requestLogger, errorLogger } = require("./middlewares/logger.js");
+const { NotFoundError } = require("./utils/errors.js");
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/wtwr_db')
+mongoose
+  .connect("mongodb://localhost:27017/wtwr_db")
   .then(() => {
-    console.log('Connected to DB');
+    console.log("Connected to DB");
   })
   .catch(console.error);
 
@@ -28,18 +26,11 @@ app.use(express.json());
 // request logger
 app.use(requestLogger);
 
-// --- PUBLIC ROUTES (Must be BEFORE auth) ---
-app.post('/signin', validateLogin, login);
-app.post('/signup', validateSignup, createUser);
-app.get('/items', getClothingItems);
+app.use("/", mainRouter);
 
-// --- AUTHORIZATION MIDDLEWARE ---
-// This protects everything below it
-app.use(auth);
-
-// --- PROTECTED ROUTES ---
-app.use('/users', usersRouter);
-app.use('/items', clothingItemsRouter);
+app.use((req, res, next) => {
+  next(new NotFoundError("Requested resource not found"));
+});
 
 // error logger
 app.use(errorLogger);

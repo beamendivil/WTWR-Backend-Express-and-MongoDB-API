@@ -13,6 +13,7 @@ The idea of the application is pretty simple - we make a call to an API, which t
 - **JavaScript ES6+** - Modern JavaScript features
 - **Geolocation API** - User location detection
 - **Cabinet Grotesk** - Custom typography
+- **The frontend is configured to call the backend at http://localhost:3001 by default.**
 
 ## Features
 
@@ -129,9 +130,9 @@ npm run deploy
 
 ## Links
  ## Project Pitch Video
- 
+
 [Check out my video  Pitch here] (https://drive.google.com/file/d/1YO0qHTFBgcfvCzdzvFkXXmg_7fUn3d9p/view?usp=sharing),
-where I describe my 
+where I describe my
 project and some challenges I faced while building it.
 
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
