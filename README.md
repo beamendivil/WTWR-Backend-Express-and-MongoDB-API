@@ -10,6 +10,11 @@ The idea of the application is pretty simple - we make a call to an API, which t
 - **SSL**: The domain is fronted by Nginx with a Let's Encrypt certificate. You can re-check the certificate status any time via [SSL Shopper](https://www.sslshopper.com/ssl-checker.html) by entering the hostname above.
 - **Reverse Proxy**: Public HTTPS traffic terminates at Nginx and is proxied to the Express server running on `localhost:3001`.
 
+## Production Frontend
+
+- **Base URL**: https://www.quemepongo.baselinux.net
+- **Hosting**: Served over HTTPS with the same DNS zone, configured to call the backend via the `VITE_API_URL` pointing at `https://api.quemepongo.baselinux.net`.
+
 ## Technologies Used
 
 - **React 18.3.1** - Frontend library for building user interfaces

@@ -6,10 +6,17 @@ const {
   likeItem,
   unlikeItem,
 } = require('../controllers/clothingItems.js');
-const { validateCreateItem, validateId } = require('../middlewares/validation.js');
+const auth = require('../middlewares/auth.js');
+const {
+  validateCreateItem,
+  validateId,
+} = require('../middlewares/validation.js');
+
+router.get('/', getClothingItems);
+
+router.use(auth);
 
 router.post('/', validateCreateItem, createClothingItem);
-router.get('/', getClothingItems);
 router.delete('/:itemId', validateId, deleteItem);
 router.put('/:itemId/likes', validateId, likeItem);
 router.delete('/:itemId/likes', validateId, unlikeItem);
