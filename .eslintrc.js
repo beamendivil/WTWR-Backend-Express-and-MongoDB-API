@@ -4,35 +4,35 @@ module.exports = {
     node: true,
     browser: true,
   },
-  ignorePatterns: ["dist"],
-  extends: "airbnb-base",
+  ignorePatterns: ['dist'],
+  extends: 'airbnb-base',
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        extensions: [".js"],
+        extensions: ['.js'],
       },
     },
   },
   rules: {
-    "no-underscore-dangle": ["error", { allow: ["_id"] }],
-    "no-unused-vars": ["error", { argsIgnorePattern: "next" }],
-    "no-console": "off",
-    "no-new": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
+    'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    'no-console': 'off',
+    'no-new': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
       {
-        devDependencies: ["server.js", "**/*.test.js", "**/*.spec.js"],
+        devDependencies: ['server.js', '**/*.test.js', '**/*.spec.js'],
       },
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
+    'import/extensions': [
+      'error',
+      'ignorePackages',
       {
-        js: "always",
+        js: 'always',
       },
     ],
   },
@@ -41,9 +41,9 @@ module.exports = {
       env: {
         node: true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: "script",
+        sourceType: 'script',
       },
     },
   ],
