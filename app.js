@@ -1,18 +1,18 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const { errors } = require('celebrate');
-const mainRouter = require('./routes/index.js');
-const errorHandler = require('./middlewares/error-handler.js');
-const { requestLogger, errorLogger } = require('./middlewares/logger.js');
-const { NotFoundError } = require('./utils/errors.js');
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const { errors } = require("celebrate");
+const mainRouter = require("./routes/index.js");
+const errorHandler = require("./middlewares/error-handler.js");
+const { requestLogger, errorLogger } = require("./middlewares/logger.js");
+const { NotFoundError } = require("./utils/errors.js");
 
 // Connect to MongoDB
 mongoose
-  .connect('mongodb://localhost:27017/wtwr_db')
+  .connect("mongodb://localhost:27017/wtwr_db")
   .then(() => {
-    console.log('Connected to DB');
+    console.log("Connected to DB");
   })
   .catch(console.error);
 
@@ -27,14 +27,16 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.use((req, res, next) => {
-  req.user = { _id: '5d8b8592978f8bd833ca8133' };
+  req.user = {
+    _id: "5d8b8592978f8bd833ca8133",
+  };
   next();
 });
 
-app.use('/', mainRouter);
+app.use("/", mainRouter);
 
 app.use((req, res, next) => {
-  next(new NotFoundError('Requested resource not found'));
+  next(new NotFoundError("Requested resource not found"));
 });
 
 // error logger
