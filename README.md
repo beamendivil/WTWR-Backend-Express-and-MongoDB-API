@@ -4,6 +4,12 @@
 
 The idea of the application is pretty simple - we make a call to an API, which then responds with the daily weather forecast. We collect the weather data, process it, and then based on the forecast, we recommend suitable clothing to the user.
 
+## Production Backend
+
+- **Base URL**: https://api.quemepongo.baselinux.net
+- **SSL**: The domain is fronted by Nginx with a Let's Encrypt certificate. You can re-check the certificate status any time via [SSL Shopper](https://www.sslshopper.com/ssl-checker.html) by entering the hostname above.
+- **Reverse Proxy**: Public HTTPS traffic terminates at Nginx and is proxied to the Express server running on `localhost:3001`.
+
 ## Technologies Used
 
 - **React 18.3.1** - Frontend library for building user interfaces
@@ -122,16 +128,14 @@ The app categorizes weather into three types:
 
 ## Deployment
 
-The application is deployed on GitHub Pages. To deploy:
-
-```bash
-npm run deploy
-```
+- **Backend**: https://api.quemepongo.baselinux.net (served via Nginx + Let's Encrypt). After every deployment or certificate renewal, verify HTTPS using [SSL Shopper](https://www.sslshopper.com/ssl-checker.html) to confirm the certificate chain is valid and not expired.
+- **Frontend**: still deploys to GitHub Pages via `npm run deploy` from the React repository (`se_project_react`).
 
 ## Links
- ## Project Pitch Video
 
-[Check out my video  Pitch here] (https://drive.google.com/file/d/1YO0qHTFBgcfvCzdzvFkXXmg_7fUn3d9p/view?usp=sharing),
+## Project Pitch Video
+
+[Check out my video Pitch here] (https://drive.google.com/file/d/1YO0qHTFBgcfvCzdzvFkXXmg_7fUn3d9p/view?usp=sharing),
 where I describe my
 project and some challenges I faced while building it.
 
@@ -142,5 +146,3 @@ project and some challenges I faced while building it.
 **Bea Mendivil**
 
 - GitHub: [@beamendivil](https://github.com/beamendivil)
-
-
