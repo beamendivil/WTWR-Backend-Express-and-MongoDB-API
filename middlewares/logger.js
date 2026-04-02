@@ -1,38 +1,36 @@
-// middlewares/logger.js
+const winston = require("winston");
+const expressWinston = require("express-winston");
 
-// importing the necessary modules
-const winston = require('winston');
-const expressWinston = require('express-winston');
-
-// create the custom formatter
 const messageFormat = winston.format.combine(
-  winston.format.timestamp(),
+  winston.format.colorize({ all: true }),
+  winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
   winston.format.printf(
-    ({
-      level, message, meta, timestamp,
-    }) => `${timestamp} ${level}: ${meta.error?.stack || message}`,
-  ),
+    ({ level, message, timestamp }) => `${timestamp} ${level}: ${message}`
+  )
 );
 
-// create a request logger
 const requestLogger = expressWinston.logger({
   transports: [
     new winston.transports.Console({
       format: messageFormat,
     }),
     new winston.transports.File({
-      filename: 'request.log',
+      filename: "request.log",
       format: winston.format.json(),
     }),
   ],
 });
 
-// error logger
 const errorLogger = expressWinston.errorLogger({
   transports: [
-    new winston.transports.File({ filename: 'error.log' }),
+    new winston.transports.Console({
+      format: messageFormat,
+    }),
+    new winston.transports.File({
+      filename: "error.log",
+      format: winston.format.json(),
+    }),
   ],
-  format: winston.format.json(),
 });
 
 module.exports = {
