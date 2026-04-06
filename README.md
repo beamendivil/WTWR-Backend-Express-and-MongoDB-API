@@ -13,7 +13,7 @@ The idea of the application is pretty simple - we make a call to an API, which t
 ## Production Frontend
 
 - **Base URL**: https://www.quemepongo.baselinux.net
-- **Hosting**: Served over HTTPS with the same DNS zone, configured to call the backend via the `VITE_API_URL` pointing at `https://api.quemepongo.baselinux.net`.
+- **Hosting**: Served over HTTPS with the same DNS zone, configured to call the backend via the `VITE_API_URL` pointing at `https://api.quemepongo.basecurl --tlsv1.2 https://api.quemepongo.baselinux.net/linux.net`.
 
 ## Technologies Used
 
@@ -135,6 +135,14 @@ The app categorizes weather into three types:
 
 - **Backend**: https://api.quemepongo.baselinux.net (served via Nginx + Let's Encrypt). After every deployment or certificate renewal, verify HTTPS using [SSL Shopper](https://www.sslshopper.com/ssl-checker.html) to confirm the certificate chain is valid and not expired.
 - **Frontend**: still deploys to GitHub Pages via `npm run deploy` from the React repository (`se_project_react`).
+
+## Release Notes (April 2, 2026)
+
+- Backend bootstrap was refactored and Winston middleware was restored.
+- Nginx was updated to serve React static assets and proxy `/api` requests to Express.
+- Backend lockfile dependencies were refreshed.
+- Frontend production env config and Vite base path were normalized.
+- Frontend dependencies and lockfile were refreshed, and the production build passed.
 
 ## Links
 

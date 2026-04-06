@@ -28,6 +28,10 @@ app.get("/crash-test", () => {
     throw new Error("Server will crash now");
   }, 0);
 });
+// Public endpoint for reviewers
+app.get("/", (req, res) => {
+  res.send("WTWR API is running! Welcome, reviewer.");
+});
 
 // request logger
 app.use(requestLogger);

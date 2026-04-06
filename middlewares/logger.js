@@ -16,7 +16,10 @@ const requestLogger = expressWinston.logger({
     }),
     new winston.transports.File({
       filename: "request.log",
-      format: winston.format.json(),
+      format: winston.format.combine(
+        winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+        winston.format.json()
+      ),
     }),
   ],
 });
@@ -28,7 +31,10 @@ const errorLogger = expressWinston.errorLogger({
     }),
     new winston.transports.File({
       filename: "error.log",
-      format: winston.format.json(),
+      format: winston.format.combine(
+        winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+        winston.format.json()
+      ),
     }),
   ],
 });
