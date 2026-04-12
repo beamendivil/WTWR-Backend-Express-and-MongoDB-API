@@ -5,7 +5,7 @@ module.exports = {
     browser: true,
   },
   ignorePatterns: ['dist'],
-  extends: 'airbnb-base',
+  extends: ['airbnb-base', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
