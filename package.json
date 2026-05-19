@@ -32,12 +32,12 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beamendivil/se_project_react.git"
+    "url": "git+https://github.com/beamendivil/WTWR-Backend-Express-and-MongoDB-API.git"
   },
   "keywords": [],
   "author": "Bea",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/beamendivil/se_project_react/issues"
+    "url": "https://github.com/beamendivil/WTWR-Backend-Express-and-MongoDB-API/issues"
   }
 }
