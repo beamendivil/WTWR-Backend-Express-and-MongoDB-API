@@ -6,10 +6,10 @@ This repository contains the Express and MongoDB backend API for WTWR. The backe
 
 ## Live Project
 
-Backend API: https://api.quemepongo.baselinux.net  
-Frontend: https://www.quemepongo.baselinux.net  
-Frontend Repository: https://github.com/beamendivil/se_project_react  
-Project Pitch Video: https://drive.google.com/file/d/1YO0qHTFBgcfvCzdzvFkXXmg_7fUn3d9p/view?usp=sharing  
+Backend API: https://api.quemepongo.baselinux.net
+Frontend: https://www.quemepongo.baselinux.net
+Frontend Repository: https://github.com/beamendivil/WTWR-Frontend-React-Weather-Based-Wardrobe-App
+Project Pitch Video: https://drive.google.com/file/d/1YO0qHTFBgcfvCzdzvFkXXmg_7fUn3d9p/view?usp=sharing
 
 ## Portfolio Summary
 
@@ -19,47 +19,47 @@ The API allows authenticated users to create clothing items, delete only their o
 
 ## Features
 
-* Express server
-* MongoDB database connection
-* Mongoose schemas and models
-* User signup and signin
-* Password hashing with bcryptjs
-* JWT authentication
-* Protected user routes
-* Clothing item CRUD functionality
-* Like and unlike functionality
-* Owner based authorization for deleting items
-* Request validation
-* Centralized error handling
-* Request and error logging
-* CORS support
-* Production deployment with Nginx reverse proxy
-* HTTPS support with SSL certificate
+- Express server
+- MongoDB database connection
+- Mongoose schemas and models
+- User signup and signin
+- Password hashing with bcryptjs
+- JWT authentication
+- Protected user routes
+- Clothing item CRUD functionality
+- Like and unlike functionality
+- Owner based authorization for deleting items
+- Request validation
+- Centralized error handling
+- Request and error logging
+- CORS support
+- Production deployment with Nginx reverse proxy
+- HTTPS support with SSL certificate
 
 ## Technologies Used
 
-* Node.js
-* Express
-* MongoDB
-* Mongoose
-* bcryptjs
-* JSON Web Token
-* Celebrate
-* Validator
-* CORS
-* Winston
-* Express Winston
-* Dotenv
-* ESLint
-* Prettier
-* Nodemon
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- bcryptjs
+- JSON Web Token
+- Celebrate
+- Validator
+- CORS
+- Winston
+- Express Winston
+- Dotenv
+- ESLint
+- Prettier
+- Nodemon
 
 ## Related Frontend
 
 This backend supports the WTWR React frontend.
 
-Frontend Repository: https://github.com/beamendivil/se_project_react  
-Frontend URL: https://www.quemepongo.baselinux.net  
+Frontend Repository: https://github.com/beamendivil/WTWR-Frontend-React-Weather-Based-Wardrobe-App
+Frontend URL: https://www.quemepongo.baselinux.net
 
 The frontend handles the user interface, weather display, wardrobe cards, modals, profile page, and user interactions.
 
@@ -69,22 +69,22 @@ The frontend handles the user interface, weather display, wardrobe cards, modals
 
 Make sure you have the following installed:
 
-* Node.js
-* npm
-* MongoDB
+- Node.js
+- npm
+- MongoDB
 
 ### Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/beamendivil/se_project_express.git
+git clone https://github.com/beamendivil/WTWR-Backend-Express-and-MongoDB-API.git
 ```
 
 Navigate into the project folder:
 
 ```bash
-cd se_project_express
+cd WTWR-Backend-Express-and-MongoDB-API
 ```
 
 Install dependencies:
@@ -301,12 +301,12 @@ Requires authorization.
 
 The backend includes centralized error handling for common API errors, including:
 
-* Bad request
-* Unauthorized access
-* Forbidden actions
-* Resource not found
-* Duplicate email conflicts
-* Server errors
+- Bad request
+- Unauthorized access
+- Forbidden actions
+- Resource not found
+- Duplicate email conflicts
+- Server errors
 
 This helps keep API responses consistent and easier to debug.
 
@@ -314,12 +314,12 @@ This helps keep API responses consistent and easier to debug.
 
 Current security features include:
 
-* Password hashing
-* JWT based authentication
-* Protected routes
-* Ownership checks before deletion
-* Request validation
-* Environment variable support for secrets
+- Password hashing
+- JWT based authentication
+- Protected routes
+- Ownership checks before deletion
+- Request validation
+- Environment variable support for secrets
 
 Before production use, continue improving security by rotating secrets, reviewing CORS settings, and ensuring all environment variables are configured securely.
 
@@ -335,12 +335,12 @@ The backend is served behind Nginx with HTTPS enabled.
 
 Recommended production checks:
 
-* Confirm the API is reachable
-* Confirm SSL certificate is active
-* Confirm frontend requests are pointed to the production API
-* Confirm MongoDB is running
-* Confirm environment variables are set
-* Confirm protected routes reject unauthenticated requests
+- Confirm the API is reachable
+- Confirm SSL certificate is active
+- Confirm frontend requests are pointed to the production API
+- Confirm MongoDB is running
+- Confirm environment variables are set
+- Confirm protected routes reject unauthenticated requests
 
 ## Project Structure
 
@@ -371,16 +371,16 @@ se_project_express/
 
 ## Future Improvements
 
-* Add automated tests
-* Add API documentation with Swagger or Postman
-* Add refresh token support
-* Improve production environment configuration
-* Add rate limiting
-* Add stronger CORS controls
-* Add database seed script
-* Add admin functionality
-* Add more detailed logging
-* Add image upload support
+- Add automated tests
+- Add API documentation with Swagger or Postman
+- Add refresh token support
+- Improve production environment configuration
+- Add rate limiting
+- Add stronger CORS controls
+- Add database seed script
+- Add admin functionality
+- Add more detailed logging
+- Add image upload support
 
 ## What I Learned
 
@@ -390,7 +390,7 @@ This project strengthened my understanding of how frontend applications communic
 
 ## Author
 
-Bea Mendivil  
+Bea Mendivil
 GitHub: https://github.com/beamendivil
 
 ## License
